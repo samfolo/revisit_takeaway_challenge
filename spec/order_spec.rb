@@ -11,11 +11,30 @@ describe Order do
 
   it "returns an order of 3 Pizzas" do
     order.add_item(pizza, 3)
-    expect(order.view).to eq "1. 3x Pizza: 18"
+    expect(order.view).to eq "1. 3x Pizza: £18.00"
   end
 
   it "returns an order of 5 Dumplings" do
     order.add_item(dumplings, 5)
-    expect(order.view).to eq "1. 5x Dumplings: 7.5"
+    expect(order.view).to eq "1. 5x Dumplings: £7.50"
   end
+
+  describe '#total' do
+    it "calculates the total of 4 dumplings, 2 pizzas and an icecream as £20.00" do
+      order.add_item(dumplings, 4)
+      order.add_item(pizza, 2)
+      order.add_item(icecream)
+
+      expect(order.total).to eq '£20.00'
+    end
+
+    it "calculates the total of 2 dumplings, 3 pizzas and 2 noodles as £30.00" do
+      order.add_item(dumplings, 2)
+      order.add_item(pizza, 3)
+      order.add_item(noodles, 2)
+
+      expect(order.total).to eq '£30.00'
+    end
+  end
+
 end

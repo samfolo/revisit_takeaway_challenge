@@ -5,7 +5,7 @@ class Menu
 
   def view
     @items.map.with_index { |item, indx|
-      "#{indx+1}. #{item[:dish]}: #{item[:price]}"
+      "#{indx + 1}. #{item[:dish]}: #{item[:price]}"
     }.join("\n")
   end
 end
